@@ -7,15 +7,18 @@ import { InterestRatesComponent } from "./interest-rates/interest-rates.componen
 import { AppRoutingModule } from "./app-routing.module";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { HelloComponent } from "./hello.component";
+import { InterestRatesService } from "./interest-rates.service";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
-  imports: [BrowserModule, FormsModule, AppRoutingModule],
+  imports: [BrowserModule, FormsModule, AppRoutingModule, HttpClientModule],
   declarations: [
     AppComponent,
     InterestRatesComponent,
     DashboardComponent,
     HelloComponent
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [InterestRatesService]
 })
 export class AppModule {}

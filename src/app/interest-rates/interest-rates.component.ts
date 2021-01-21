@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { InterestRatesService } from "../interest-rates.service";
 
 @Component({
   selector: "app-interest-rates",
@@ -6,14 +7,13 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./interest-rates.component.css"]
 })
 export class InterestRatesComponent implements OnInit {
-  interestRatesList = [
-    { rateClass: "NHG", rate: "1" },
-    { rateClass: "t/m 67,50% MW", rate: "1.3" },
-    { rateClass: "t/m 81% MW", rate: "1.5" },
-    { rateClass: "meer dan 81%", rate: "1.8" }
-  ];
+  interestRatesList;
 
-  constructor() {}
+  constructor(private interestRatesService: InterestRatesService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.interestRatesService
+      .getInterestRates()
+      .subscribe(interestRates => (this.interestRatesList = interestRates));
+  }
 }
