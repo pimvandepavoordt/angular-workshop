@@ -1,3 +1,7 @@
 <p>
-interest-rates works!
+	interest-rates works!
 </p>
+{{interestRatesList}}
+<ul>
+	<li *ngFor="let interestRate of interestRatesList">{{ interestRate.rate }}</li>
+</ul>
