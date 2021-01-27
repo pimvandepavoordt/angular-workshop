@@ -10,6 +10,7 @@ export class InterestRatesComponent implements OnInit {
   interestRatesList;
   filteredList;
   searchValue = "";
+  isAscending = false;
 
   constructor(private interestRatesService: InterestRatesService) {}
 
@@ -39,5 +40,14 @@ export class InterestRatesComponent implements OnInit {
     this.filteredList = this.interestRatesList.filter(item =>
       item.Hypotheek.toLowerCase().includes(this.searchValue.toLowerCase())
     );
+  }
+
+  sortByName() {
+    this.isAscending = !this.isAscending;
+    this.filteredList.sort((a, b) => {
+      return (
+        a.Hypotheek.localeCompare(b.Hypotheek) * (this.isAscending ? 1 : -1)
+      );
+    });
   }
 }

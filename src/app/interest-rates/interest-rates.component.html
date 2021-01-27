@@ -8,41 +8,46 @@
     <option value="20_jaar">20 years</option>
     <option value="30_jaar">30 years</option>
 </select>
+<br>
+<mat-form-field class="example-full-width">
+	<mat-label>Favorite food</mat-label>
+	<input matInput placeholder="Ex. Pizza" value="Sushi">
+</mat-form-field>
+	<br>
+	<input type="text" (change)="onSearchChange($event)">
 
-<input type="text" (change)="onSearchChange($event)">
-
-<table>
-	<th>
-		Name
-	</th>
-	<th>
-		NHG
-	</th>
-	<th>
-		60% LTV
-	</th>
-	<th>
-		80% LTV
-	</th>
-	<th>
-		100% LTV
-	</th>
-	<tr *ngFor="let rate of filteredList">
-		<td>{{ rate.Hypotheek }}</td>
-		<td>{{ rate.NHG }}</td>
-		<td>{{ rate['60%'] }}</td>
-		<td>{{ rate['80%'] }}</td>
-		<td>{{ rate['100%'] }}</td>
-	</tr>
-</table>
+	<table>
+		<th (click)="sortByName()">
+			Name
+		</th>
+		<th>
+			NHG
+		</th>
+		<th>
+			60% LTV
+		</th>
+		<th>
+			80% LTV
+		</th>
+		<th>
+			100% LTV
+		</th>
+		<tr *ngFor="let rate of filteredList">
+			<td>{{ rate.Hypotheek }}</td>
+			<td>{{ rate.NHG }}</td>
+			<td>{{ rate['60%'] }}</td>
+			<td>{{ rate['80%'] }}</td>
+			<td>{{ rate['100%'] }}</td>
+		</tr>
+	</table>
 
 
-<div *ngFor="let rate of filteredList">
-	<h4>{{ rate.Hypotheek }}</h4>
-	<ul>
-		<li>NHG - {{ rate.NHG }}</li>
-		<li>60% LTV - {{ rate['60%'] }}</li>
-		<li>80% LTV - {{ rate['80%'] }}</li>
-		<li>100% LTV - {{ rate['100%'] }}</li>
-	</ul>
-</div>
+	<div *ngFor="let rate of filteredList">
+		<h4>{{ rate.Hypotheek }}</h4>
+		<ul>
+			<li>NHG - {{ rate.NHG }}</li>
+			<li>60% LTV - {{ rate['60%'] }}</li>
+			<li>80% LTV - {{ rate['80%'] }}</li>
+			<li>100% LTV - {{ rate['100%'] }}</li>
+		</ul>
+	</div>
